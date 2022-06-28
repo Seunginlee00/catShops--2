@@ -37,7 +37,7 @@
 			<h2><a href="index.html">Bring me back Home</a></h2>
 		</div>
 	</div>
-
+<%--일단일단--%>
   
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
