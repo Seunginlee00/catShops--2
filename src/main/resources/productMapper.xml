@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "product">
+	<insert id="productJoin">
+		insert into product values (#{p_number}, #{p_name}, #{p_kind}, #{p_price},#{p_total}, #{p_stock}, #{p_subscription}, #{p_content}, #{p_image}, #{p_r_image}, now()) 	
+	</insert>
+	
+	<select id="productList" resultType= "pdto">
+		select * from product
+	</select>
+	
+	<select id="productInfo" parameterType="int" resultType= "pdto">
+		select * from product where p_number = #{p_number}
+	</select>
+	
+	<update id="productUpdate" parameterType="pdto">
+        update product set p_name = #{p_name}, p_kind = #{p_kind}, p_price = #{p_price}, p_stock = #{p_stock}, p_subscription = #{p_subscription}, p_content = #{p_content} WHERE p_number = #{p_number}
+    </update>
+    
+    <update id="productImgUpdate" parameterType="pdto">
+        update product set p_image = #{p_image}, p_r_image = #{p_r_image} WHERE p_number = #{p_number}
+    </update>
+    
+    <delete id="productDelete">
+    	delete from product where p_number = #{p_number}
+    </delete>
+    
+    <select id="commonProductList" resultType= "pdto">
+		select * from product where p_subscription = 'X'
+	</select>
+	
+	<select id="subProductList" resultType= "pdto">
+		select * from product where p_subscription = 'O'
+	</select>
+</mapper>

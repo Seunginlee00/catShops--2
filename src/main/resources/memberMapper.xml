@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "member">
+	<select id="login" parameterType="dto" resultType= "int">
+		select count(*) from member where
+		m_id = #{m_id} and
+		m_pw = #{m_pw}
+	</select>
+	
+	<select id="list" resultType= "dto">
+		select * from member
+	</select>
+	
+	<select id="memberInfo" parameterType="string" resultType= "dto">
+		select * from member where m_id = #{m_id}
+	</select>
+	
+	<select id="idCheck" parameterType="string" resultType= "int">
+		select count(*) from member where m_id = #{m_id} 
+	</select>
+	
+	<insert id="join">
+		insert into member (m_id, m_pw, m_name, m_email, m_date) 
+		values (#{m_id}, #{m_pw}, #{m_name}, #{m_email}, now())
+	
+	</insert>
+	
+	<select id="findId" parameterType="dto" resultType="string">
+		select m_id from member where m_name = #{m_name} and m_email = #{m_email}
+	</select>
+	
+	<select id="findPw" parameterType="dto" resultType="string">
+		select m_pw from member where m_id = #{m_id} and m_email = #{m_email}
+	</select>
+	
+	<update id="memberUpdate" parameterType="dto">
+        update member set m_pw = #{m_pw}, m_name = #{m_name}, m_email = #{m_email} WHERE m_id = #{m_id}
+    </update>
+    
+    
+    
+    <select id="adminLogin" parameterType="adto" resultType= "int">
+		select count(*) from admin where
+		a_id = #{a_id} and
+		a_pw = #{a_pw}
+	</select>
+	
+	<select id="adminInfo" parameterType="string" resultType= "adto">
+		select * from admin where a_id = #{a_id}
+	</select>
+	
+	<insert id="adminJoin">
+		insert into admin (a_id, a_pw, a_name, a_email, a_date) 
+		values (#{a_id}, #{a_pw}, #{a_name}, #{a_email}, now())
+	</insert>
+	
+	<select id="adminId" resultType= "adto">
+		select a_id from admin
+	</select>
+	
+	<select id="adminList" resultType= "adto">
+		select * from admin
+	</select>
+	
+	<update id="adminUpdate" parameterType="adto">
+        update admin set a_pw = #{a_pw}, a_name = #{a_name}, a_email = #{a_email} WHERE a_id = #{a_id}
+    </update>
+    
+    <delete id="adminDelete">
+    	delete from admin where a_id = #{a_id}
+    </delete>
+    
+    <select id="list2" resultType="dto">
+    	select * from member where m_id = #{m_id}
+    </select>
+    
+	
+</mapper>

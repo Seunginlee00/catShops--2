@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "board">
+	<select id="boardlist" resultType= "bdto">
+		select * from board
+	</select>
+	
+	<insert id="write">
+		insert into board values (#{b_number}, #{b_subject}, #{b_content}, #{b_name}, now(), 0)
+	</insert>
+	
+	<select id="list2" resultType = "bdto">
+		select * from board where b_number = #{b_number}
+	</select>
+	
+	<update id="modify">
+		update board set b_number = #{b_number}, b_subject = #{b_subject}, b_content = #{b_content}, b_name = #{b_name}, b_date = now(), b_readCount = b_readCount + 1 
+        WHERE b_number = #{b_number}
+	</update>
+	
+	<delete id="detele">
+		delete from board where b_number = #{b_number}
+	</delete>
+	
+ 
+    <!-- MySQL-->
+    <!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="bdto">
+    
+        select * from (
+                select b_number, b_subject,b_content,b_name, b_date, b_readCount   
+                from board order by b_number desc) as T1
+        limit #{skip},#{amount}
+    
+    </select>
+	
+	   <!-- 게시물 총 개숫 -->
+    <select id="getTotal" resultType="int">
+    
+        select count(*) from board
+    
+    </select>
+	
+	
+	    <!-- MySQL-->
+    <!-- 여기부터는 오프라인 게시판 ~! -->
+    <select id="getListPaging2" resultType="com.spring.ex.dto.offlineDto">
+    
+        select * from (
+                select  m_name, o_number, o_time, o_date, o_phone, o_content
+                from offline order by o_number desc) as T1
+        limit #{skip},#{amount}
+    
+    </select>
+	
+	   <!-- 게시물 총 개숫 -->
+    <select id="getTotal2" resultType="int">
+    
+        select count(*) from offline
+    
+    </select>
+	
+	<insert id="write2">
+		insert into offline values (#{m_name},#{o_number},#{o_time},now(), #{o_phone}, #{o_content})
+	</insert>
+	
+	
+		<update id="modify2">
+		update offline set o_number = #{o_number}, m_name = #{m_name}, o_content = #{o_content}, o_time = #{o_time}, o_date = now() 
+        WHERE o_number = #{o_number}
+	</update>
+	
+	<delete id="detele2">
+		delete from offline where o_number = #{o_number}
+	</delete>
+	
+		<select id="list22" resultType = "com.spring.ex.dto.offlineDto">
+		select * from offline where o_number = #{o_number}
+	</select>
+
+	<!-- 문의 관련  -->
+
+	<select id="list3" resultType= "com.spring.ex.dto.supportDto">
+		select * from support
+	</select>
+
+	<insert id="write3">
+		insert into support values (#{s_number}, #{s_type}, #{s_content}, now(),'미답변',"")
+	</insert>
+
+	<update id="modify3">
+		update support set s_number = #{s_number}, s_type = #{s_type}, s_content = #{s_content}, s_dates = now(), s_check =  "미답변"
+		WHERE s_number = #{s_number}
+	</update>
+
+	<delete id="detele3">
+		delete from support where s_number = #{s_number}
+	</delete>
+	<select id="list33" resultType = "com.spring.ex.dto.supportDto">
+		select * from support where s_number = #{s_number}
+	</select>
+
+	<update id="answer">
+		update support set s_check =  #{s_check}, s_check_content = #{s_check_content}
+		WHERE s_number = #{s_number}
+	</update>
+
+	<!-- 리뷰 쿼리문 -->
+	<insert id="reviewInsert" >
+		insert into review (r_number, m_id, r_subject, r_content, r_date, r_open) values (#{r_number}, #{m_id}, #{r_subject}, #{r_content}, now(), #{r_open})
+	</insert>
+	<select id="reviewSelect" resultType="com.spring.ex.dto.reviewDto">
+		select * from review
+	</select>
+
+	<select id="reviewSelect2" resultType="com.spring.ex.dto.reviewDto">
+		select * from review where r_number = #{r_number}
+	</select>
+	<update id="reviewModfiy">
+		update review set r_subject = #{r_subject} , r_content = #{r_cotnet}, r_open = #{r_open}, r_date = now() where r_number = #{r_number}
+	</update>
+	<delete id="reviewDelete">
+		delete from review where r_number = #{r_number}
+	</delete>
+</mapper>

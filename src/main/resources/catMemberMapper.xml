@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "catMember">
+
+	<insert id="catJoin">
+		insert into catMember (c_name,c_type,c_age,c_sex,c_weight, c_neutering, c_image, c_r_image, m_id) values 
+		(#{c_name},#{c_type},#{c_age},#{c_sex}, #{c_weight},#{c_neutering}, #{c_image}, #{c_r_image}, #{m_id})	
+	</insert>
+	
+	<select id="catInfo" parameterType="string" resultType= "cdto">
+		select * from catMember where m_id = #{m_id}
+	</select>
+	
+	<select id="cat" parameterType="string" resultType= "cdto">
+		select * from catMember where c_name = #{c_name}
+	</select>
+	
+	<update id="catUpdate" parameterType="cdto">
+        update catMember set c_type = #{c_type}, c_age = #{c_age}, c_sex = #{c_sex}, c_weight = #{c_weight}, c_neutering = #{c_neutering}
+        WHERE c_name = #{c_name}
+    </update>
+    
+    <update id="catImgUpdate" parameterType="cdto">
+        update catMember set c_image = #{c_image}, c_r_image = #{c_r_image}
+        WHERE c_name = #{c_name}
+    </update>
+    
+    <delete id="catDelete">
+    	delete from catMember where c_name = #{c_name}
+    </delete>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "delivery">
+	<insert id="deliveryJoin">
+		insert into delivery values (#{d_number}, #{m_id}, #{p_number}, #{p_name}, #{d_amount}, #{c_sum_price}, #{d_recipient}, #{d_postcode}, #{d_destination}, #{d_message}, #{d_state}, now()) 	
+	</insert>
+	
+    <select id="deliveryList" parameterType="int" resultType= "ddto">
+		select * from delivery where d_number = #{d_number}
+	</select>
+	
+	<select id="deliveryListUser" resultType= "ddto">
+		select * from delivery where m_id = #{m_id}
+	</select>
+	
+	<select id="deliveryListAll" resultType= "ddto">
+		select * from delivery group by d_number
+	</select>
+	
+	<update id="deliveryStatusUpdate" parameterType="string">
+        update delivery set d_state = #{d_state} WHERE d_number = #{d_number}
+    </update>
+    
+    <insert id="subdeliveryJoin">
+		insert into subdelivery values (#{sd_number}, #{m_id}, #{p_number}, #{p_name}, #{p_r_image}, #{sd_amount}, #{c_sum_price}, #{sd_recipient}, #{sd_postcode}, #{sd_destination}, #{sd_message}, #{sd_state}, #{sd_month}, now(), DATE_ADD(now(), INTERVAL #{sd_month} MONTH) ) 	
+	</insert>
+	
+	<select id="subdeliveryList" parameterType="string" resultType= "sddto">
+		select * from subdelivery where m_id = #{m_id}
+	</select>
+	
+	<select id="subdeliveryListAll" resultType= "sddto">
+		select * from subdelivery 
+	</select>
+	
+	<select id="subdeliveryListD" parameterType="int" resultType= "sddto">
+		select * from subdelivery where sd_number = #{sd_number}
+	</select>
+	
+	<delete id="subdeliveryDelete">
+    	delete from subdelivery where sd_number = #{sd_number}
+    </delete>
+</mapper>
