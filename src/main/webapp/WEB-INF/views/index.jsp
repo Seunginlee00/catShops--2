@@ -89,7 +89,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li class="dropdown"><a href="#">Categorie<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown"><a href="#">Kategorie<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop">사료</a></li>
                                         <li><a href="shop">간식</a></li>
