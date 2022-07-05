@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 관리자 : 회원 관리 페이지 -->
 
@@ -186,7 +186,7 @@
                     <div class="card-body card-block">
                		   
                         <form action="modifyOk" method="post" class="form-horizontal">
-                           <c:forEach items="${list }" var="row">
+                           <c:forEach items="${list}" var="row">
                             <div class="row form-group">
                                 <div class="col col-md-3"><label class=" form-control-label">이름</label></div>
                                 <div class="col-12 col-md-9">
@@ -213,18 +213,6 @@
                                         name="password" placeholder="Password" value="${row.m_pw}" class="form-control"></div>
                             </div>
                             </c:forEach>
-                      	<!--  
-                      	<c:forEach items="list2" var="row1">
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input"
-                                        class=" form-control-label">고양이</label></div>
-                                <div class="col-12 col-md-9">
-                                    <label for="text-input" class=" form-control-label">김꼬미</label>
-                                    <input type="button" onclick="location='catMore?id=${row1.c_name}'" value="더보기">
-                                </div>
-                            </div>
-                            </c:forEach>
-                            -->
                             <button type="submit" class="btn btn-danger btn-sm">
                             <i class="fa fa-check-circle-o"></i> 저장
                         </button>

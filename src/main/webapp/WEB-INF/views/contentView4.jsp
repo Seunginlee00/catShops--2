@@ -230,16 +230,25 @@
                             <strong class="card-title">리뷰하기 </strong>
                         </div>
                         <div class="card-body">
+							<c:forEach items="${rdto}" var="row">
 								<%String id = request.getParameter("m_id");%>
 								<input type="hidden" name="m_id" value="<%=id%>">
                                            <div class="row form-group">
 											   <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">공개여부 </label></div><br/>
-											   <input type="radio" name="open" value="n"><span>비공개</span>
-											   <input type="radio" name="open" value="y"><span>공개</span><br/>
-                                               <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">제목 </label></div><br/>
+											   <c:if test="${row.r_open eq 'y'}" >
+												   <input type="radio" name="open" value="n"><span>비공개</span>
+												   <input type="radio" name="open" value="y" checked><span>공개</span><br/>
+											   </c:if>
+
+
+											   <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">제목 </label></div><br/>
                                                <div class="col-12 col-md-9">
 
-                                               <textarea name="subject" id="textarea-input" rows="2" class="form-control">${rdto.r_subject}</textarea>
+                                               <textarea name="subject" id="textarea-input" rows="2" class="form-control">
+														   <c:if test="${row.r_open eq 'y'}" >
+															   <c:out value="${row.r_subject}"/>
+														   </c:if>
+											   </textarea>
 
                                                </div>
 
@@ -247,7 +256,12 @@
                                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">내용 </label></div>
                                                <div class="col-12 col-md-9">
 
-                                               <textarea name="content" id="textarea-input" rows="5" class="form-control"></textarea>
+                                               <textarea name="content" id="textarea-input" rows="5" class="form-control">
+
+														 <c:if test="${row.r_open eq 'y'}" >
+															 <c:out value="${row.r_content}"/>
+														 </c:if>
+											   </textarea>
 
                                                </div>
 
@@ -255,6 +269,10 @@
 											   <div class="col-12 col-md-9">
 
 												   <textarea name="content" id="textarea-input" rows="5" class="form-control">
+
+													<c:if test="${row.r_comment ne null}" >
+														${row.r_comment}
+													</c:if>
 
 												   </textarea>
 											   </div>
@@ -264,7 +282,7 @@
 									<div class="row form-group">
                                     		<input type="submit" value="글쓰기 " >
                                     </div>
-
+							</c:forEach>
                         </div>
                     </div>
 
@@ -279,6 +297,7 @@
 				</div>
 			</form>
 	</section>
+</div>
 
 	
 	

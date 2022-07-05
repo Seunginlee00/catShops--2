@@ -126,6 +126,7 @@ public class memberController {
 	public String memberDetails(@RequestParam("m_id") String id, Model model) throws Exception {
 		List<memberDto> mdtos = memberService.memberList2(id);
 		List<catMemberDto> cdtos = catmemberService.catInfo(id);
+		System.out.println(mdtos);
 		model.addAttribute("list", mdtos);
 		model.addAttribute("list2", cdtos);
 		return "/admin/memberDetails";

@@ -269,11 +269,12 @@
 
                                             <c:forEach var="result" items="${rdtos}" varStatus="status">
                                         <tr style="text-align:center;">
+
                                             <td><a href="contentView4?r_number=${result.r_number}"><c:out value="${result.r_number}"/></a></td>
-                                                <c:if test="${result.r_open eq 'n'}" >
+                                                 <c:if test="${result.r_open eq 'n'}" >
                                                       <td> 비밀글은 작성자와 관리자만 볼 수 있습니다. </td>
                                                 </c:if>
-                                                <c:if test="${result.r_open eq 'y'}" >
+                                            <c:if test="${result.r_open eq 'y'}" >
                                                     <td><c:out value="${result.m_id}"/></td>
                                                     <td><c:out value="${result.r_content}"/></td
                                                 </c:if>

@@ -435,9 +435,9 @@ public class boardController {
 	public String contentView4(@RequestParam("r_number") String number, Model model) throws Exception {
 		int num = Integer.parseInt(number);
 		System.out.println(num);
-		List<reviewDto> dto = boardservice.list44(num);
-		System.out.println(dto);
-		model.addAttribute("rdto",dto);
+		List<reviewDto> reviewDtosdto = boardservice.list44(num);
+		System.out.println(reviewDtosdto);
+		model.addAttribute("rdto",reviewDtosdto);
 		return "contentView4";
 	}
 

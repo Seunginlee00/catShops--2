@@ -58,36 +58,36 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-bell "></i>구독</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-bell "></i><a href="subscriptionManagement.jsp">구독관리</a></li>
+                        <li><i class="menu-icon fa fa-bell "></i><a href="subscriptionManagement">구독관리</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-truck "></i>배송</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-truck"></i><a href="shippingManagement.jsp">배송관리</a></li>
+                        <li><i class="menu-icon fa fa-truck"></i><a href="shippingManagement">배송관리</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-building"></i>업체</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-building"></i><a href="businessManagement.jsp">업체관리</a></li>
+                        <li><i class="menu-icon fa fa-building"></i><a href="businessManagement">업체관리</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-mobile"></i>SNS</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-mobile"></i><a href="snsManagement.jsp">SNS관리</a></li>
+                        <li><i class="menu-icon fa fa-mobile"></i><a href="snsManagement">SNS관리</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-book"></i>상담</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-book"></i><a href="consultationHistory.jsp">상담내역</a></li>
-                        <li><i class="menu-icon fa fa-plus-circle"></i><a href="newConsultation.jsp">새로운 상담</a></li>
+                        <li><i class="menu-icon fa fa-book"></i><a href="consultationHistory">상담내역</a></li>
+                        <li><i class="menu-icon fa fa-plus-circle"></i><a href="newConsultation">새로운 상담</a></li>
                     </ul>
                 </li>
 
@@ -97,8 +97,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-plus-square-o"></i>Pages</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="login.jsp">Login</a></li>
-                        <li><i class="menu-icon fa fa-cog"></i><a href="settings.jsp">Settings</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="login">Login</a></li>
+                        <li><i class="menu-icon fa fa-cog"></i><a href="settings">Settings</a></li>
 
                         </li>
                     </ul>
